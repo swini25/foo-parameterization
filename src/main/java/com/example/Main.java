@@ -1,13 +1,16 @@
-package main.java.com.example;
+package com.example;
 
-import main.java.com.example.model.Sphere;
-import main.java.com.example.service.FooParameterization;
+import com.example.model.Sphere;
+import com.example.service.FooParameterization;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        try{
 
         System.out.println("Enter the radius of the sphere:");
         double radius = scanner.nextDouble();
@@ -17,6 +20,13 @@ public class Main {
 
         double volume = fooParameterization.calculateVolume(sphere);
         System.out.println("The volume of the sphere is: " + volume);
+
+    }
+    catch (InputMismatchException e) {
+        System.out.println("Invalid input. Please enter a valid numeric value for the radius.");
+     } finally {
+        scanner.close(); 
+    }
     }
     
 }
